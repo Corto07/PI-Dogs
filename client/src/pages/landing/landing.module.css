@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+
+.container {
+  display: grid;
+  align-content: center;  
+  height: 99vh;
+  width: auto;
+  margin: auto; 
+  align-items: center;
+  text-align: center;
+  background-position: center;
+  background-size: cover;  
+  overflow: hidden;
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
+  align-items: center;
+  text-align: center;
+}
+.title h2 {
+	color: #fff;
+	font-size: 5em;
+	transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: -1;
+  top: 21%;
+  left: 75%;   
+}
+
+.title h2:nth-child(1) {
+	color: transparent;
+	-webkit-text-stroke: 2px #01364e;
+  text-align: center;
+ }
+
+.title h2:nth-child(2) {
+	color: #01364e;
+	animation: animate 4s ease-in-out infinite;
+  text-align: center;
+  text-shadow: 1px 1px 2px white, 0 0 1em transparent, 0 0 0.2em transparent;
+}
+
+.title2 {
+  background: transparent;; 
+  text-shadow: 2px 1px 5px red, 0 0 0.2em wheat, 0 0 0.2em white;
+  display: inline;
+  font: 31.2px Helvetica, Sans-Serif;
+  letter-spacing: -5px;
+  color: rgba(0,0,255,0.5); 
+  font-weight: 500;
+  position: absolute;
+  z-index: -1;
+  top: 7%;
+  left: 52.2%;   
+}
+
+.title2:after {
+  
+		position: absolute; left: 50px; top: 3px;
+		color: rgba(200, 8, 8, 0.5); 
+}
+
+.contButton {
+display:grid;
+}
+
+.button {
+  display: inline-block;
+  font-size: 28px;
+  padding: .5em .8em;
+  margin-top: 500px;
+  margin-bottom: 80px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #083f63c5;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+  box-shadow: 0 2px 25px rgba(255, 255, 255, 0.5);
+  letter-spacing: 1.5px;
+}
+
+.button:focus {
+  outline: 0;
+}
+
+.button:before, .bubblyButton:after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 140%;
+  height: 100%;
+  left: -20%;
+  z-index: -1000;
+  transition: all ease-in-out 0.5s;
+  background-repeat: no-repeat;
+}
+
+  .button:active {
+  transform: scale(0.9);
+  background-color: #327d9b;
+  box-shadow: 0 2px 25px rgba(2, 122, 32, 0.2);
+}
+
+.button:hover {
+  background: #083f63c5;
+  box-shadow: 0 0 10px rgba(54, 240, 7, 0.5), 0 0 10px rgba(54, 240, 7, 0.5), 0 0 10px rgba(54, 240, 7, 0.5), 0 0 10px rgba(54, 240, 7, 0.5);
+  transition-delay: 0,3ms;
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+}
+
+.button.animate:before {
+  display: block;
+  animation: topBubbles ease-in-out 0.75s forwards;
+}
+
+.video {
+    position: absolute;
+    z-index: -1;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(1px);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(1px);
+  }
+}
+
+.animateTitle {
+  animation: fadeInUp 2s ease-out forwards;
+}
+
+.animateTitle2 {
+  animation: fadeInRight 2s ease-out forwards;
+}
+
+@keyframes animate {
+	0%,
+	100% {
+		clip-path: polygon(
+			0% 45%,
+			16% 44%,
+			33% 50%,
+			54% 60%,
+			70% 61%,
+			84% 59%,
+			100% 52%,
+			100% 100%,
+			0% 100%
+		);
+	}
+
+	50% {
+		clip-path: polygon(
+			0% 60%,
+			15% 65%,
+			34% 66%,
+			51% 62%,
+			67% 50%,
+			84% 45%,
+			100% 46%,
+			100% 100%,
+			0% 100%
+		);
+	}
+}

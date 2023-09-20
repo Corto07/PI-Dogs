@@ -7,84 +7,89 @@ const {API_KEY} = process.env;
 
 const getDogsByName = async (req, res) => {
   const { name } = req.query;
+  const allDogs = await getAllDogs()
   try {
     if(name){
-      // Muestre el perro encontrado con la descripcion
-      const dogsByName = await getDogByName(name)
+      const dog = allDogs.filter(d => d.name.toLowerCase().includes(name.toLowerCase()));//si el perro existe guardame sus parametros.
       // Si el perro no se encuentra guardado. Mensaje de no encontrado
-      if (dogsByName.length === 0) {
-        return res.status(404).json({ message: `Sorry, Not Found the race ${name}`});
+      dog.length
+        ? res.status(200).json(dog)
+        : res.status(404).json({ message: `Lo siento, No se encontro la raza ${name}`});
+      } else {
+        res.status(200).json(allDogs)
       }
-      res.status(200).json(dogsByName)
-    } else {
-      // Muestre todos los perros
-      const response = await getAllDogs()
-      res.status(200).json(response)
-    }
   } catch (error) { 
     res.status(400).json({error: error.message});
   }
 };
 
-const infoDogs = (array) => { 
-  return array.map((dog) => {
-  return {
-    id: dog.id,
-    name: dog.name,
-    weight: dog.weight && dog.weight.metric,
-    height: dog.height && dog.height.metric, 
-    life_span: dog.life_span && dog.life_span,
-    temperament: dog.temperament
-      ? dog.temperament
-      : "🐶 Sin temperamentos",
-    image: dog.image.url,
-    origin: dog.origin
-      ? dog.origin
-      : "🐶 Origen desconocido",
-    createDb: false,
-  };
-});
-};
+const getApiData = async() => {
+    
+  const apiData = await axios.get(`${URL_BASE}?api_key=${API_KEY}`);
+  const apiInfo = await apiData.data.map(dog => {
+  let temperamentArray = [];
+  if (dog.temperament) {//pregunto que exista el temperamento y lo devuelvo en un arreglo
+      temperamentArray = dog.temperament.split(", ");
+  }
+  let heightArray = [];
+    if (dog.height.metric) {
+        heightArray = dog.height.metric.split(" - ");
+    }
 
-const getAllDogs = async () => {
-  // Funcion que busca en la base de datos
-  const dogsDB = await Dog.findAll({ 
-    include: {
-      model: Temperament,
-      attributes: ["name"],
-        through: {
-          attributes: [],
-        },
+    let weightArray = [];
+    if (dog.weight.metric) {
+        weightArray = dog.weight.metric.split(" - ");
+    }
+  return {
+        id: dog.id,
+        name: dog.name,
+        height: heightArray,
+        weight: weightArray,
+        life_span: dog.life_span,
+        temperaments: temperamentArray,
+        image: dog.image.url,
+        createDb: false,
       }
-  });
-  // Trae los datos de la API
-  const dogsApi = (await axios.get(`${URL_BASE}?api_key=${API_KEY}`)).data;
-  // Funcion que devuelve el array completo
-  const dogsByApi = infoDogs (dogsApi)
-  // Retorno todos los perros encontrados en la API y en la DB
-  return [...dogsDB,...dogsByApi]
+  })
+      return apiInfo;
 }
 
-const getDogByName = async (name) => {
-  // Trae los datos de la API
-  const dogsApi = (await axios.get(`${URL_BASE}?api_key=${API_KEY}`)).data;
-  // Funcion que devuelve el array completo
-  const dogsByApi = infoDogs (dogsApi)
-  // Funcion que Fitrar desde el array que viene de la API - Sin distincion de Minuscula o Mayuscula
-  const dogFilterApi = dogsByApi.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()));
-  // Funcion que Busca y Fitrar desde la base de Datos
-  const dogFilterDB = await Dog.findAll({ 
-    include: {
-      model: Temperament,
-      attributes: ["name"],
-        through: {
-          attributes: [],
-        },
+//-- Get data from the database posgrest--//
+const getFromDb = async () => {
+  const dogsFromDb = await Dog.findAll({
+      include: {
+          model: Temperament,
+          attributes: ['name'], //atributos que quiero traer del modelo Temperament, el id lo trae automatico
+          through: {
+              attributes: [],//traer mediante los atributos del modelo
+          },
       }
+  })
+
+  const transformedDogs = dogsFromDb.map(dog => {
+    return {
+      id: dog.id,
+      name: dog.name,
+      height: dog.height,
+      weight: dog.weight,
+      life_span: dog.life_span,
+      temperaments: dog.Temperaments.map(temp => ({ name: temp.name })),
+      image: dog.image,
+      createDb: dog.createDb
+    };
   });
-  const dogsNameDb = dogFilterDB.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()));
-  // Retorno la data del perro encontrado ya sea en la API o en la DB
-  return [...dogFilterApi,...dogsNameDb]
+
+  return transformedDogs;
+};
+
+
+//combine data from API and database
+const getAllDogs = async () => {
+  const dataFromApi = await getApiData();
+  const dataFromDb = await getFromDb();
+  // const allDataMixed = dataFromApi.concat(dataFromDb);
+  const allDataMixed = [...dataFromDb, ...dataFromApi];
+  return allDataMixed;
 }
 
 module.exports = getDogsByName;

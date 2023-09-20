@@ -7,56 +7,82 @@ const URL_IMG = "https://cdn2.thedogapi.com/images/";
 const { API_KEY } = process.env;
 
 const getDogsById = async (req, res) => {
+    
   const { idRaza } = req.params;
-  const source = isNaN(idRaza) ? "bdd" : "api"
-    // soures es "bdd" si el resultado es: 29fe4e09-e43e-4f94-a0a8-ac50bba076b6
-    // source es "api" si el resultado es: 4
-  try {
-    const response = await getDogById( idRaza, source );
-    if (!response || idRaza > 264) {
-      return res.status(404).json({ error: `Race with Id ${idRaza} Not Found` }); 
-    } else {
-      res.status(200).json(response)
-    }
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }  
+  const allDogs = await getAllDogs();
+  const dog = allDogs.filter(el => el.id == idRaza);
+  if (dog.length) {
+      res.status(200).json(dog);
+  }else{
+      res.status(404).send("Perro no encontrado");
+  }
 };
 
-const infoDogs = (array) => { 
-  return array.map((dog) => {
-  return {
-    id: dog.id,
-    name: dog.name,
-    weight: dog.weight && dog.weight.metric,
-    height: dog.height && dog.height.metric, 
-    life_span: dog.life_span && dog.life_span,
-    temperament: dog.temperament
-      ? dog.temperament
-      : "🐶 Sin temperamentos",
-    image: `${URL_IMG}` + dog.reference_image_id + ".jpg",
-    origin: dog.origin
-      ? dog.origin
-      : "🐶 Origen desconocido",
-    createDb: false,
-  };
-  });
-};
-  
-const getDogById = async (idRaza, source) => {
-  const getInfoDog = source === "api" 
-    ? (await axios.get(`${URL_BASE}${idRaza}?api_key=${API_KEY}`)).data
-    : await Dog.findByPk(idRaza, {
+const getAllDogs = async () => {
+  const dataFromApi = await getApiData();
+  const dataFromDb = await getFromDb();
+  // const allDataMixed = dataFromApi.concat(dataFromDb);
+  const allDataMixed = [...dataFromApi, ...dataFromDb];
+  return allDataMixed;
+}
+
+const getFromDb = async () => {
+  const dogsFromDb =  await Dog.findAll({
       include: {
-        model: Temperament,
-        attributes: ["name"],
+          model: Temperament,
+          attributes: ['name'], //atributos que quiero traer del modelo Temperament, el id lo trae automatico
           through: {
-            attributes: [],
+              attributes: [],//traer mediante los atributos del modelo
           },
-        }
-      });
-  return source === "api" ? infoDogs([getInfoDog])[0] : getInfoDog;
-     
+      }
+  })
+
+  const transformedDogs = dogsFromDb.map(dog => {
+    return {
+      id: dog.id,
+      name: dog.name,
+      height: dog.height,
+      weight: dog.weight,
+      life_span: dog.life_span,
+      temperaments: dog.Temperaments.map(temp => ({ name: temp.name })),
+      image: dog.image,
+      createDb: dog.createDb
+    };
+  });
+
+  return transformedDogs;
+};
+
+ 
+const getApiData = async() => {
+    
+  const apiData = await axios.get(`${URL_BASE}?api_key=${API_KEY}`);
+  const apiInfo = await apiData.data.map(dog => {
+  let temperamentArray = [];
+  if (dog.temperament) {//pregunto que exista el temperamento y lo devuelvo en un arreglo
+      temperamentArray = dog.temperament.split(", ");
+  }
+  let heightArray = [];
+    if (dog.height.metric) {
+        heightArray = dog.height.metric.split(" - ");
+    }
+
+    let weightArray = [];
+    if (dog.weight.metric) {
+        weightArray = dog.weight.metric.split(" - ");
+    }
+  return {
+        id: dog.id,
+        name: dog.name,
+        height: heightArray,
+        weight: weightArray,
+        life_span: dog.life_span,
+        temperaments: temperamentArray,
+        image: dog.image.url,
+        createDb: false,
+      }
+  })
+      return apiInfo;
 }
 
 module.exports = getDogsById;

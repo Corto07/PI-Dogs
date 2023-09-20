@@ -1,0 +1,153 @@
+*{
+margin: 0;
+padding: 0;
+}
+
+.containerFondo{
+    align-content: center; 
+    height: 99vh;
+    width: auto;
+    margin: auto;
+    display: flex;
+    background-image: url("../../assets/img/5K5SLOUMTBHRFBZNFOGIACHTFE.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.containerDescripcion{
+    height: 90vh;
+    width: 90%;
+    margin: auto;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.308);
+    display: grid;
+    grid-template-rows: 100px ;
+    grid-template-columns: 100fr 1fr 1fr 1fr 100fr;
+    grid-gap: 10px;
+    grid-template-areas:
+    "area1 area1 area1 area1 area1"
+    "area2 area2  . area3 area3"
+    "area2 area2  . area3 area3"
+    "area2 area2  . area3 area3"
+    "area2 area2  . area3 area3"
+}
+
+.containerSuperior{
+    text-align: center;
+    grid-area: area1;
+    backdrop-filter: blur(10px);
+}
+
+.containerIzquierdo{
+    text-align: center;
+    grid-area: area2;
+    backdrop-filter: blur(10px);
+    margin: 10px 1px 20px 20px;
+}
+
+.containerDerecho{  
+    /* display: flex; */
+    text-align: center;
+    display:inline-block;  
+    grid-area: area3;
+    backdrop-filter: blur(10px);
+    margin: 10px 20px 20px 1px;    
+}
+
+.Home {
+    margin-left: 90%;
+    margin-top: 35px;
+    padding: 5px 10px 5px 10px;
+    font-size: 16px;
+    background-color: rgb(177, 0, 177);
+    color: white;
+    border: 1px solid rgb(177, 0, 177);
+    border-radius: 5px;
+}
+
+.Home:hover {
+    background-color: rgb(70, 7, 70);
+    color: white;
+    border: 1px solid rgb(70, 7, 70);
+    cursor: pointer;
+}
+
+.Nombre {
+   font-family:Arial, Helvetica, sans-serif ;
+   font-weight: bold;
+   font-size: 30px;
+   color: white;
+   text-shadow: 3px 3px 3px black;
+   left: 50%;
+   position: absolute;
+   top: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.Imagen{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    backdrop-filter: blur(2px);
+}
+
+.TemperamentoTitulo{
+    text-shadow: 3px 3px 3px black;
+    margin-top: 30px;
+    color: red;
+}
+
+.TemperamentoTexto {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    padding: 15px 15px 5px 15px;
+    font-size: 20px;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 0.5em blue, 0 0 0.5em blue;
+   
+    text-transform: uppercase;
+    margin: 3px 5px 3px 0;
+    display: inline-block;
+      
+    letter-spacing: 1px;
+}
+
+.PesoTitulo{
+    margin-top: 80px;
+    color: red;
+    text-shadow: 3px 3px 3px black;
+}
+
+.AlturaTitulo{
+    margin-top: 10px;
+    color: red;
+    text-shadow: 3px 3px 3px black;
+}
+
+.YearsTitulo {
+    margin-top: 10px;
+    color: red;
+    text-shadow: 3px 3px 3px black;
+}
+
+.PesoTexto{
+    font-size: 20px;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 0.5em blue, 0 0 0.5em blue;
+}
+
+.AlturaTexto{
+    font-size: 20px;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 0.5em blue, 0 0 0.5em blue;
+}
+
+.YearsTexto {
+    font-size: 20px;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 0.5em blue, 0 0 0.5em blue;
+}

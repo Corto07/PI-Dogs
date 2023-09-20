@@ -1,0 +1,130 @@
+@font-face {
+    font-family: 'Pacifico';
+    src: url(../../assets/fonts/Pacifico-Regular.ttf) format('truetype');
+}
+
+.container {
+    display: flex;  
+    padding: 10px;
+    width: 100%;
+    height: 70px;
+    color: white;
+    background-color: rgb(1, 5, 12);
+    line-height: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 2fr 0.5fr 0.5fr;
+    grid-gap: 5px;
+    grid-template-areas:
+    "area1 area2 area3 area4"
+    "area1 area2 area3 area4"
+    "area1 area2 area3 area4"; 
+}
+
+.containerTitle {
+    text-align: center;
+    grid-area: area1;  
+    /* background-color: blue; */
+    /* backdrop-filter: blur(10px); */
+}
+
+.texto {
+    margin-left: 12%;
+    margin-top: 27px;
+    color: white;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px 2px black, 0 0 1em rgb(5, 60, 100), 0 0 0.2em rgb(5, 60, 100);
+}
+
+.imagen {
+    margin-left: -75%;
+    margin-top: -45px;
+    width: 70px;
+    height: 70px;    
+}
+
+.containerSearch {
+    text-align: center;
+    grid-area: area2;  
+    /* background-color: red; */
+    /* backdrop-filter: blur(10px); */
+}
+
+.containerBotonReload {
+    text-align: center;
+    grid-area: area4;  
+    /* background-color: yellow; */
+    /* backdrop-filter: blur(10px); */
+}
+
+.containerBotonCrear {
+    text-align: center;
+    grid-area: area3;  
+    /* background-color: brown; */
+    /* backdrop-filter: blur(10px); */
+}
+
+
+.botonCrear {
+    margin-left: -90%;
+    margin-top: 15px;
+    height: 40px;
+    width: 130px;
+    border-radius: 10px;
+    background-color:rgb(5, 60, 100);
+    color: white;
+    font-size: 15px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    transition: all, 500ms, ease;
+    border: 1px solid black;
+    outline: 2px solid white;
+    margin-bottom: 40px;
+    z-index: 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.botonCrear:hover {
+    background: #04837c;
+    box-shadow: 0 0 10px #20e2d7, 0 0 10px #20e2d7, 0 0 10px #20e2d7, 0 0 10px #20e2d7;
+    transition-delay: 0,5ms;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+    font-weight: 700;
+    cursor: pointer; 
+    letter-spacing: 2px;
+}
+
+.botonReload {
+    margin-left: -75%;
+    margin-top: 15px;
+    height: 40px;
+    width: 130px;
+    border-radius: 10px;
+    background-color:rgb(5, 60, 100);
+    color: white;
+    font-size: 15px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    transition: all, 500ms, ease;
+    border: 1px solid black;
+    outline: 2px solid white;
+    margin-bottom: 40px;
+    z-index: 0;
+    font-weight: 600;
+    letter-spacing: 1px; 
+}
+
+.botonReload:hover {
+    background: #04837c;
+    box-shadow: 0 0 10px #20e2d7, 0 0 10px #20e2d7, 0 0 10px #20e2d7, 0 0 10px #20e2d7;
+    transition-delay: 0,5ms;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+    font-weight: 700;
+    cursor: pointer; 
+    letter-spacing: 2px;
+}

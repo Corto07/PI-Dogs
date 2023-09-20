@@ -1,0 +1,114 @@
+.dogsAreaFiltros{
+  display: grid;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 90vw;
+  margin-top: 2px;
+  /* background-color: cadetblue; */
+}
+
+.filterSection{
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+grid-gap: 15px;
+grid-template-areas:
+  "area1 area2 area3 area4";
+}
+
+.filterHeaderArea1{
+  text-align: center;
+  grid-area: area1;
+  width: 100%;
+  background-color: cadetblue;
+  color: black;
+  font-size: 14px;
+  padding: .5em;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 5px 8px 8px black;
+  outline: none;
+  font-weight: 500;
+  transition: all .3s;
+  border-bottom: 1px solid white;
+  border-right: 1px solid white; 
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 13px;  
+}
+
+.filterHeaderArea2{
+  text-align: center;
+  grid-area: area2;
+  width: 100%;
+  background-color: cadetblue;
+  color: black;
+  font-size: 14px;
+  padding: .5em;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 5px 8px 8px black;
+  outline: none;
+  font-weight: 500;
+  transition: all .3s;
+  border-bottom: 1px solid white;
+  border-right: 1px solid white; 
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 13px; 
+}
+.filterHeaderArea3{
+  text-align: center;
+  grid-area: area3;
+  width: 100%;
+  background-color: cadetblue;
+  color: black;
+  font-size: 14px;
+  padding: .5em;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 5px 8px 8px black;
+  outline: none;
+  font-weight: 500;
+  transition: all .3s;
+  border-bottom: 1px solid white;
+  border-right: 1px solid white; 
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 13px;  
+}
+.filterHeaderArea4{
+  text-align: center;
+  grid-area: area4; 
+  width: 100%;
+  background-color: cadetblue;
+  color: black;
+  font-size: 14px;
+  padding: .5em;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 5px 8px 8px black;
+  outline: none;
+  font-weight: 500;
+  transition: all .3s;
+  border-bottom: 1px solid white;
+  border-right: 1px solid white; 
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 13px; 
+}
+
+.pagination {
+  width: 92%;
+  height: 75px;
+  /* background-color: rgb(238, 27, 167); */
+}
+
+.container {
+  width: 90vw;
+  height: 800px;
+  background-color: transparent;
+   /* justify-content: space-around; */
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+

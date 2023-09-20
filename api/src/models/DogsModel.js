@@ -19,19 +19,15 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: "https://www.anipedia.net/imagenes/nombres-de-perros-800x375.jpg"
     },
-    weight: {
-      type:DataTypes.STRING,
+    height: {
+      type: DataTypes.ARRAY(DataTypes.STRING),//al enviar los datos por medio del body se hace con un array
       allowNull: false
     },
-    height: {
-      type:DataTypes.STRING,
+    weight: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false
     },
     life_span: {
-      type:DataTypes.STRING,
-      allowNull: false
-    },
-    origin: {
       type:DataTypes.STRING,
       allowNull: false
     },

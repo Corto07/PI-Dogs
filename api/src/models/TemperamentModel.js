@@ -1,13 +1,7 @@
 const { DataTypes, Sequelize } = require('sequelize');
-
 module.exports = (sequelize) => {
     
-  sequelize.define('Temperament', {
-    id: {
-      type :DataTypes.INTEGER,
-      primaryKey   : true ,
-      autoIncrement  :true
-    },
+  sequelize.define('Temperament', { 
     name:{
       type: DataTypes.STRING,
       allowNull: false,

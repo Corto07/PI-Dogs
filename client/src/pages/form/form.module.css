@@ -1,0 +1,216 @@
+*{
+  margin: 0;
+  padding: 0;
+  }
+
+.mainContainerCreation {
+  align-content: center;  
+  height: 99vh;
+  width: auto;
+  margin: auto;
+  display: grid;
+  background-image: url("../../assets/img/¿Cuantos-dedos-tienen-los-perros-y-de-que-depende-este.webp");
+  background-position: center;
+  background-size: cover;  
+}
+
+.formContainer {
+    height: 90vh;
+    width: 90%;
+    margin: auto;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.308);
+    display: grid;
+    grid-template-rows:  1fr 1.6fr 1fr 1.2fr 2.8fr;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+    grid-template-areas:
+    "area1 area1 area1 area1 area1"
+    "area2 area2 area3 area3 area3"
+    "area2 area2 area3 area3 area3"
+    "area4 area4 area3 area3 area3"
+    "area5 area5 area3 area3 area3"; 
+  }
+
+.containerSuperior{
+  text-align: center;
+  grid-area: area1;  
+  backdrop-filter: blur(10px);
+}
+
+.container_1{
+  text-align: center;
+  grid-area: area2;   
+  backdrop-filter: blur(10px);
+}
+
+.container_2{  
+  text-align: center;
+  grid-area: area3;  
+  backdrop-filter: blur(10px);     
+}
+
+.container_3{  
+  text-align: center;
+  grid-area: area4; 
+  backdrop-filter: blur(10px); 
+}
+
+.container_4{  
+  text-align: center;
+  grid-area: area5;  
+  backdrop-filter: blur(10px); 
+}
+
+.Nombre {
+  font-family:Arial, Helvetica, sans-serif ;
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+  text-shadow: 3px 3px 3px black;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button {
+    position: absolute;
+    top: 89% ;
+    left: 55%;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    color: white;
+    border: 1px solid black;
+    background: #04837c;
+    cursor: pointer;
+  }
+
+  .button:hover{
+    background-color:rgb(5, 60, 100);
+    transition-delay: 0,5ms;
+    color: white;
+    font-weight: 300;
+    border: 1px solid white;
+    transform: scale(1.02,1.02);
+    box-shadow: 0 0 5px #20e2d7, 0 0 5px #20e2d7, 0 0 5px #20e2d7, 0 0 5px #20e2d7;
+  }
+
+  .buttonCancel {
+    position: absolute;
+    top: 89% ;
+    left: 30%;
+    cursor: pointer;
+    padding: 11px 30px 12px 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: rgb(200, 50, 50);
+    color: white;
+  }
+
+  .buttonCancel:hover{
+    background-color: red;
+    transform: scale(1.02,1.02);
+    box-shadow: 0 0 5px #20e2d7, 0 0 5px #20e2d7, 0 0 5px #20e2d7, 0 0 5px #20e2d7;
+  }
+  
+  .Section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    margin: 8px;
+    padding: 8px;
+    border: 1px solid white;
+    border-radius: 15px;
+    gap: 1px;
+    box-shadow: 6px 7px 8px -6px rgba(69, 69, 69, 0.7);
+  }
+  
+  .sidebar_box {
+    /* align-content: center;   */
+    display: flex;
+    flex-wrap: wrap;
+    width: 97%;
+    background: rgb(189, 199, 161);
+    color: black;
+    padding: 2px;
+    /* border: solid 1px red; */
+    border-radius: 8px;
+    box-shadow: 8px 8px 8px rgb(37, 37, 37);
+    outline: none;
+    font-size: 17px;
+    transition: all .3s;
+    font-family: Arial, Helvetica, sans-serif;
+   }
+  
+   .empty {
+    border-color: red;
+  }
+  
+  .nonEmpty {
+    border-color: green;
+  }
+   
+  .label {
+      color: white;
+      font-weight: 400;
+      
+      font-size: 21px;
+      text-shadow: 3px 3px 3px black;
+    }
+    
+  .labelMaxMin{
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+    text-shadow: 3px 3px 3px black;
+  }
+  
+  .error {
+    font-size: 15px;
+    font-weight: 600;
+    color: red;
+  }
+  
+  .styled_select {
+    width: 98%;
+    color: white;
+    background-color: black;
+    height: 25px;
+    overflow: hidden;
+    border: 1px solid #ccc; 
+  }
+
+  .textoTemp {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+  }
+
+  .selectedItems {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    background-color: rgba(255, 255, 255, 0.281);
+    border-radius: 15px;
+    margin-right: 5px; /* Espacio entre elementos */
+    margin-bottom: 5px; /* Espacio entre elementos */
+  }
+  
+  .selTemp {
+    margin-right: 10px;
+  }
+  
+  .botton {
+    background-color: red;
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 50%; /* Para hacerlo circular */
+    display: flex;
+    justify-content: center; /* Alinea horizontalmente */
+    align-items: center; /* Alinea verticalmente */
+    cursor: pointer;
+    /* margin-left: auto; Empuja el botón al extremo derecho */
+  }
