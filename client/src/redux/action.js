@@ -1,4 +1,5 @@
 import axios from "axios";
+
 export const GET_DOGS = "GET_DOGS";
 export const GET_DETAIL = "GET_DETAILS";
 export const DELETE_DETAIL = "DELETE_DETAILS"
@@ -10,7 +11,7 @@ export const FILTER_CREATED = "FILTER_CREATED"
 export const ORDER_BY_NAME = "ORDER_BY_NAME"
 export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT"
 
-const URL_BASE = 'http://localhost:3001/';
+const URL_BASE = process.env.URL_SERVER || 'http://localhost:3001/';
 
 export function getDogs() {
   return async function(dispatch) {
@@ -79,7 +80,7 @@ export function deleteDetails() {
 export function getDogName(payload) {
   return async function (dispatch) {
     try {  
-    const response  = await axios.get(`http://localhost:3001/dogs?name=${payload}`);
+    const response  = await axios.get(`${URL_BASE}dogs?name=${payload}`);
       return dispatch({
           type: GET_DOG_NAME,
           payload: response.data

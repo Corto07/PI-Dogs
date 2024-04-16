@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
 const axios = require ("axios")
+const cors = require('cors');
 
 require('./db.js');
 
@@ -11,6 +12,10 @@ const server = express();
 
 server.name = 'API';
 
+server.use(cors({
+  origin: 'https://pi-dogs-two-silk.vercel.app', // Reemplaza esto con la URL de tu frontend en Vercel
+  optionsSuccessStatus: 200 // Algunos navegadores antiguos no envían el encabezado CORS preflight OPTIONS, por lo que esta es la opción para que los navegadores los manejen como solicitudes exitosas
+}));
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());
