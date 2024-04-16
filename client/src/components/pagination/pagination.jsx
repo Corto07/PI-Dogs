@@ -8,7 +8,7 @@ export default function Pagination ({ dogsPerPage, allDogs, pagination, currentP
         pageNumbers.push(i);
     }
 
-    const maxButtons = 10; // Número máximo de botones a mostrar
+    const maxButtons = 3; // Número máximo de botones a mostrar
     const halfButtons = Math.floor(maxButtons / 2);
     
     let startPage = Math.max(currentPage - halfButtons, 1);

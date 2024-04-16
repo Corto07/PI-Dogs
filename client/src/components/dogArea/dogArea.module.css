@@ -95,6 +95,7 @@ grid-template-areas:
 }
 
 .pagination {
+  display: grid;
   width: 92%;
   height: 75px;
   /* background-color: rgb(238, 27, 167); */
@@ -112,3 +113,38 @@ grid-template-areas:
   grid-gap: 20px;
 }
 
+
+@media screen and (max-width: 360px) {
+
+  
+  .filterSection {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 15px;
+    
+
+  }
+  
+  .filterHeaderArea1,
+  .filterHeaderArea2,
+  .filterHeaderArea3,
+  .filterHeaderArea4 {
+    margin-right: 10;
+  }
+  
+  .container {
+    width: 90vw;
+    height: 100%;
+    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 20px;
+    padding-bottom: 10px;
+
+  }
+  .pagination {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
+
+}

@@ -128,3 +128,137 @@
     cursor: pointer; 
     letter-spacing: 2px;
 }
+
+@media screen and (max-width: 360px) {
+
+
+    .container {
+        /* display: flex;   */
+        /* padding: 2px; */
+        width: 95vw;
+        height: 200px;
+        color: white;
+        background-color: rgb(1, 5, 12);
+        /* line-height: 20px; */
+        /* margin-top: 5px; */
+        margin-bottom: 10px;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-gap: 5px;
+        grid-template-areas:
+        "area1" "area2" "area3" "area4";
+    }
+
+    .containerTitle {
+        text-align: center;
+        grid-area: area1;
+ 
+    }
+
+    .texto {
+        position: absolute;
+        left: 38%;
+        top: 3%;
+        width: 40vh;
+            
+        transform: translate(-35%, -50%);
+        color: white;
+        font-size: 26px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-shadow: 1px 1px 2px black, 0 0 1em rgb(5, 60, 100), 0 0 0.2em rgb(5, 60, 100);
+    }
+    
+    .imagen {
+        position: absolute;
+        left: 80%;
+        top: 9%;
+        /* transform: translate(-50%, -50%); */
+        /* margin-left: -30%; */
+        /* margin-top: -500px; */
+        width: 70px;
+        height: 70px;    
+    }
+
+    .containerSearch {
+        text-align: center;
+        grid-area: area2;  
+    }
+    
+    .containerBotonReload {
+        text-align: center;
+        grid-area: area4;  
+    }
+    
+    .containerBotonCrear {
+        text-align: center;
+        grid-area: area3;  
+    }
+    .botonCrear {
+        position: absolute;
+        left: 108%;
+        top: 26%;          
+        transform: translate(-35%, -50%);
+        height: 40px;
+        width: 130px;
+        border-radius: 10px;
+        background-color:rgb(5, 60, 100);
+        color: white;
+        font-size: 15px;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow: hidden;
+        transition: all, 500ms, ease;
+        border: 1px solid black;
+        outline: 2px solid white;
+        margin-bottom: 10px;
+        z-index: 0;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+    
+    .botonCrear:hover {
+        background: #04837c;
+        box-shadow: 0 0 10px #20e2d7, 0 0 10px #20e2d7, 0 0 10px #20e2d7, 0 0 10px #20e2d7;
+        transition-delay: 0,5ms;
+        color: white;
+        text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+        font-weight: 700;
+        cursor: pointer; 
+        letter-spacing: 2px;
+    }
+    
+    .botonReload {
+        position: absolute;
+        left: 146%;
+        top: 26%;          
+        transform: translate(-35%, -50%);
+        height: 40px;
+        width: 130px;
+        border-radius: 10px;
+        background-color:rgb(5, 60, 100);
+        color: white;
+        font-size: 15px;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow: hidden;
+        transition: all, 500ms, ease;
+        border: 1px solid black;
+        outline: 2px solid white;
+        margin-bottom: 10px;
+        z-index: 0;
+        font-weight: 600;
+        letter-spacing: 1px; 
+    }
+    
+    .botonReload:hover {
+        background: #04837c;
+        box-shadow: 0 0 10px #20e2d7, 0 0 10px #20e2d7, 0 0 10px #20e2d7, 0 0 10px #20e2d7;
+        transition-delay: 0,5ms;
+        color: white;
+        text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+        font-weight: 700;
+        cursor: pointer; 
+        letter-spacing: 2px;
+    }
+    
+}
+
