@@ -11,7 +11,7 @@ export const FILTER_CREATED = "FILTER_CREATED"
 export const ORDER_BY_NAME = "ORDER_BY_NAME"
 export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT"
 
-const URL_BASE = process.env.URL_SERVER || 'http://localhost:3001/';
+const URL_BASE = 'https://pi-dogs-production-7a7a.up.railway.app/' || 'http://localhost:3001/';
 
 export function getDogs() {
   return async function(dispatch) {
